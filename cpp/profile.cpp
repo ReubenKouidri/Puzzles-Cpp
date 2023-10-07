@@ -8,9 +8,14 @@ Profile::Profile(
     std::string country = "No country provided",
     std::vector<std::string> hobbies = std::vector<std::string>(),
     std::string pronouns = "they/them"
-) : age(age), name(name), city(city), country(country), hobbies(std::move(hobbies)), pronouns(pronouns) {}
+) : age(age)
+, name(std::move(name))
+, city(std::move(city))
+, country(std::move(country))
+, hobbies(std::move(hobbies))
+, pronouns(std::move(pronouns)) {}
 
-[[maybe_unused]] std::string Profile::view_profile() const {
+std::string Profile::view_profile() const {
   std::string bio;
   bio += "Name: " + name + '\n';
   bio += "Age: " + std::to_string(age) + '\n';
