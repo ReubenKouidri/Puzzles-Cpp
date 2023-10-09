@@ -1,17 +1,17 @@
-#include "profile.hpp"
+#include <iostream>
+#include "reverse_ll/reverse_singly_linked_list.hpp"
 
 
 int main() {
-  constexpr int num_profiles = 1000000;
-  std::vector<std::string> new_hobbies = {"listening to audiobooks and podcasts",
-                                          "playing rec sports like bowling and kickball",
-                                          "writing a speculative sailing novel",
-                                          "reading advice columns"};
-  for (int p = 0; p < num_profiles; p++) {
-    Profile sam(20, "Sam", "London", "UK", {"music", "skiing"}, "he/him");
-    for (const auto& hobby: new_hobbies) {
-      sam.add_hobby(hobby);
-    }
-  }
-  exit(0);
-};
+  constexpr int data_1 = 1;
+  constexpr int data_2 = 2;
+  auto node_1 = Node<int>(data_1);
+  auto node_2 = Node<int>(data_2, &node_1);
+  auto ll = LinkedList<int>(&node_2);
+
+  std::cout << ll << '\n';
+
+
+
+  return 0;
+}
