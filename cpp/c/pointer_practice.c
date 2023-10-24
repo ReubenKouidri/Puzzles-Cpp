@@ -3,6 +3,9 @@
  * strcat that we showed inChapter2: strcat(s,t) copies the string 't' to the end of 's'.
 */
 
+#ifndef POINTER_PRACTICE
+#define POINTER_PRACTICE
+
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -35,14 +38,16 @@ char *my_strcat(char *dest, const char *src) {
   return new_dest;
 }
 
-int main() {
-  char *dest = "hello, ";
-  const char *src = "world!";
-  const char *another = "\tGoodbye";
-  char *new_str = my_strcat(dest, src);
-  print_arr(new_str);
-  new_str = my_strcat(new_str, another);
-  print_arr(new_str);
+//int main() {
+//  char *dest = "hello, ";
+//  const char *src = "world!";
+//  const char *another = "\tGoodbye";
+//  char *new_str = my_strcat(dest, src);
+//  print_arr(new_str);
+//  new_str = my_strcat(new_str, another);
+//  print_arr(new_str);
+//
+//  return 0;
+//}
 
-  return 0;
-}
+#endif  // POINTER_PRACTICE
