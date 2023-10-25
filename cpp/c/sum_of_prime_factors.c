@@ -35,9 +35,9 @@ int sum_prime_factors(int n) {
 }
 
 
-int main() {
-  int n = 75;
-  int sum = sum_prime_factors(n);
-  printf("%d", sum);
-  return 0;
-}
+//int main() {
+//  int n = 75;
+//  int sum = sum_prime_factors(n);
+//  printf("%d", sum);
+//  return 0;
+//}

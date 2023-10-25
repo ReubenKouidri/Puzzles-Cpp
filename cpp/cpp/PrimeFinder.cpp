@@ -46,18 +46,18 @@ std::vector<int> primeFinder(const int n) {
 }
 
 
-int main() {
-    constexpr int n = 20000;
-    auto timer = Timer();
-
-    const auto primes = timer(&primeFinder, n);
-    const auto time = timer.getTime();
-
-    std::cout << time << "s\n";
+//int main() {
+//    constexpr int n = 20000;
+//    auto timer = Timer();
+//
+//    const auto primes = timer(&primeFinder, n);
+//    const auto time = timer.getTime();
+//
+//    std::cout << time << "s\n";
 //    for (const auto p : primes) {
 //        std::cout << p << ' ' << '\n';
 //    }
-
-    return 0;
-}
+//
+//    return 0;
+//}
 

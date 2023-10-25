@@ -15,10 +15,10 @@ void bleep(const std::string& word, std::string& text) {
   }
 }
 
-int main() {
-  std::string word{"broccoli"};
-  std::string text{"For lunch, i ate broccoli. I also ate broccoli for dinner... Broccoli!"};
-  bleep(word, text);
-  std::cout << text << '\n';
-  return 0;
-};
+//int main() {
+//  std::string word{"broccoli"};
+//  std::string text{"For lunch, i ate broccoli. I also ate broccoli for dinner... Broccoli!"};
+//  bleep(word, text);
+//  std::cout << text << '\n';
+//  return 0;
+//};
