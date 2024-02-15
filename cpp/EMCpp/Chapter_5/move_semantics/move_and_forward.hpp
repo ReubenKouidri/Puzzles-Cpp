@@ -29,7 +29,6 @@ inline void make_log_entry(const std::string &message, const time_pt &time) {
             << message << '\n';
 }
 
-
 namespace demo {
 
 template <class T>
@@ -38,11 +37,11 @@ decltype(auto) move(T &&param) {
   return static_cast<ReturnType>(param);
 }
 
-[[maybe_unused]] void process(const Person& p) {
+[[maybe_unused]] void process(const Person &p) {
   std::cout << "Processing const lvalue " << p << '\n';
 }
 
-[[maybe_unused]] void process(Person&& p) {
+[[maybe_unused]] void process(Person &&p) {
   std::cout << "Processing rvalue " << p << "\n";
 }
 
@@ -58,7 +57,6 @@ void log_and_process(T &&param) {
 int main() {
   auto p = Person();
   demo::log_and_process(p);
-
   auto p2 = Person();
   demo::log_and_process(std::move(p2));
   return 0;
