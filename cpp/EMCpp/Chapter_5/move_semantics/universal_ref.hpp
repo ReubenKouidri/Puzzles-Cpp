@@ -30,7 +30,7 @@ template <typename T>
 [[maybe_unused]] inline auto&& var2 = var1; // universal reference!
 
 
-void run() {
+[[maybe_unused]] void run() {
   [[maybe_unused]] Person&& p1 = Person();  // rvalue reference
   /* Universal references must be initialized
   * The initializer determines whether it is rvalue or lvalue reference
