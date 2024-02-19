@@ -4,3 +4,5 @@ cmake-build-debug/
 */.DS_Store
 */.gitignore
 ../python/.DS_Store
+*.iml
+*.xml
