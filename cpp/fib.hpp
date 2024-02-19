@@ -2,15 +2,9 @@
 #define CODECHALLENGES_FIB_HPP
 
 #include <array>
-#include <iostream>
-
-template <typename T, std::size_t N>
-constexpr std::size_t arraySize(std::array<T, N>) noexcept {
-  return N;
-}
 
 template <std::size_t N>
-std::size_t fib(const std::size_t n) {
+inline std::size_t fib(const std::size_t n) {
   static std::array<std::size_t, N> cache{};
   if (n == 0 || n == 1) return 1;
   if (cache[n] == 0)
