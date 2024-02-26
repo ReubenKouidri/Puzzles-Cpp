@@ -1,5 +1,5 @@
-#ifndef CODECHALLENGES_DAILYCODINGPROBLEM_DCP2_HPP_
-#define CODECHALLENGES_DAILYCODINGPROBLEM_DCP2_HPP_
+#ifndef CODECHALLENGES_DAILYCODINGPROBLEM_PRODUCT_OF_INTS_IN_ARRAY_HPP_
+#define CODECHALLENGES_DAILYCODINGPROBLEM_PRODUCT_OF_INTS_IN_ARRAY_HPP_
 
 /* Given an array of integers, return a new array such that each element
  * at index i of the new array is the product of all the numbers in the
@@ -53,4 +53,4 @@ std::vector<T> part2(const std::vector<T>& v) {
   return new_vec;
 }
 
-#endif//CODECHALLENGES_DAILYCODINGPROBLEM_DCP2_HPP_
+#endif//CODECHALLENGES_DAILYCODINGPROBLEM_PRODUCT_OF_INTS_IN_ARRAY_HPP_
