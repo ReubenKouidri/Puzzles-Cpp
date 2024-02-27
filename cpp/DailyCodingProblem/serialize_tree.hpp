@@ -30,29 +30,15 @@ struct Node {
                           Node* left = nullptr,
                           Node* right = nullptr)
       : val_(val), left_(left), right_(right) {}
-};
-
-std::string serialize_dfs(Node* const root) {
-  if (!root) return "null";
-
-  auto stk = std::stack<Node*>{};
-  std::string str;
-  stk.push(root);
-
-  while (!stk.empty()) {
-    auto* node = stk.top();
-    stk.pop();
-
-    if (node) {
-      str += node->val_ + ',';
-      stk.push(node->right_);
-      stk.push(node->left_);
-    } else {
-      str += "null,";
-    }
+  constexpr Node(Node&& temp) noexcept {
+    val_ = std::move(temp.val_);
+    left_ = std::move(temp.left_);
+    right_ = std::move(temp.right_);
+    temp.val_.clear();
+    temp.left_ = nullptr;
+    temp.right_ = nullptr;
   }
-  return str;
-}
+};
 
 std::string serialize_bfs(Node* const root) {
   if (!root) {
@@ -64,12 +50,11 @@ std::string serialize_bfs(Node* const root) {
   q.push(root);
 
   while (!q.empty()) {
-    auto* node = q.front();// Correctly access the front of the queue
-    q.pop();               // Ensure we pop after accessing the node
+    auto* node = q.front();
+    q.pop();
 
     if (node) {
       str += node->val_ + ',';
-      // Enqueue children regardless of their nullptr status
       q.push(node->left_);
       q.push(node->right_);
     } else {
@@ -107,16 +92,24 @@ Node* deserialize(const std::string& str) {
     }
   }
   return root;
-};
+}
 
-void printPreOrder(Node* node) {
-  if (!node) {
-    std::cout << "null,";
-    return;
+
+void print_tree(Node* const node) {
+  auto queue = std::queue<Node*>{};
+  queue.push(node);
+
+  while (!queue.empty()) {
+    auto* n = queue.front();
+    queue.pop();
+    if (!n) {
+      std::cout << "null,";
+      continue;
+    }
+    std::cout << n->val_ << ',';
+    queue.push(n->left_);
+    queue.push(n->right_);
   }
-  std::cout << node->val_ << ',';
-  printPreOrder(node->left_);
-  printPreOrder(node->right_);
 }
 
 #endif//CODECHALLENGES_DAILYCODINGPROBLEM_SERIALIZE_TREE_HPP_
