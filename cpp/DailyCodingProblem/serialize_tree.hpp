@@ -22,10 +22,13 @@ assert deserialize(serialize(node)).left.left.val == 'left.left' */
 #include <stack>
 #include <string>
 
-struct Node {
+class Node {
   std::string val_{};
   Node* left_{nullptr};
   Node* right_{nullptr};
+
+ public:
+  virtual ~Node() = default;
   constexpr explicit Node(const std::string_view val,
                           Node* left = nullptr,
                           Node* right = nullptr)
@@ -38,6 +41,10 @@ struct Node {
     temp.left_ = nullptr;
     temp.right_ = nullptr;
   }
+
+  constexpr Node*& left() noexcept { return left_; }
+  constexpr Node*& right() noexcept { return right_; }
+  [[nodiscard]] constexpr std::string val() const noexcept { return val_; }
 };
 
 std::string serialize_bfs(Node* const root) {
@@ -54,9 +61,9 @@ std::string serialize_bfs(Node* const root) {
     q.pop();
 
     if (node) {
-      str += node->val_ + ',';
-      q.push(node->left_);
-      q.push(node->right_);
+      str += node->val() + ',';
+      q.push(node->left());
+      q.push(node->right());
     } else {
       str += "null,";
     }
@@ -80,20 +87,19 @@ Node* deserialize(const std::string& str) {
 
     if (getline(ss, item, ',')) {
       if (item != "null") {
-        node->left_ = new Node(item);
-        q.push(node->left_);
+        node->left() = new Node(item);
+        q.push(node->left());
       }
     }
     if (getline(ss, item, ',')) {
       if (item != "null") {
-        node->right_ = new Node(item);
-        q.push(node->right_);
+        node->right() = new Node(item);
+        q.push(node->right());
       }
     }
   }
   return root;
 }
-
 
 void print_tree(Node* const node) {
   auto queue = std::queue<Node*>{};
@@ -106,9 +112,9 @@ void print_tree(Node* const node) {
       std::cout << "null,";
       continue;
     }
-    std::cout << n->val_ << ',';
-    queue.push(n->left_);
-    queue.push(n->right_);
+    std::cout << n->val() << ',';
+    queue.push(n->left());
+    queue.push(n->right());
   }
 }
 
