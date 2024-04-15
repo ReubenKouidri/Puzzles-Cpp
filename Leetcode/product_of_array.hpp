@@ -27,19 +27,24 @@ Follow up: Can you solve the problem in O(1) extra space complexity?
 (The output array does not count as extra space for space complexity analysis.)
 */
 
-#include <iostream>
 #include <vector>
 #include <cassert>
-#include <ranges>
 
 std::vector<int> product_of_array(std::vector<int>&& nums) {
-  const auto n = nums.size();
+  const int n = static_cast<int>(nums.size());
   std::vector<int> left_prods(n, 1);
   std::vector<int> right_prods(n, 1);
-  std::vector<int> result(n);
+  std::vector<int> result;
+  result.reserve(n);
 
-  for (size_t i{0}; i < n; i++) {
+  for (int i = 1; i < n; i++)
+    left_prods[i] = left_prods[i - 1] * nums[i - 1];
 
+  for (int i = n - 2; i >= 0; i--)
+    right_prods[i] = right_prods[i + 1] * nums[i + 1];
+
+  for (int i = 0; i < n; i++) {
+    result.emplace_back(left_prods[i] * right_prods[i]);
   }
   return result;
 }
